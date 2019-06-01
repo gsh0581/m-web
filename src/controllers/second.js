@@ -1,0 +1,2 @@
+require('./name');
+require('./name');
