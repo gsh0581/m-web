@@ -1,11 +1,11 @@
-// const gulp = require('gulp');
 const { src, dest, series, parallel, watch } = require('gulp');
 const webserver = require('gulp-webserver'); // 启动服务器
 const webpackStream = require('webpack-stream'); // 打包
 const path = require('path'); // 路径
 const sass = require('gulp-sass'); // sass 转义
 const proxy = require("http-proxy-middleware");
-const del = require('del')
+const del = require('del');
+
 
 function copyHTML() {
   return src("./*.html")
@@ -26,8 +26,9 @@ function copyicons() {
 function webServer() {
   return src('./dev')
     .pipe(webserver({
+      host: 'localhost',
       livereload: true,
-      port: 9000,
+      port:8001,
       open: true,
       middleware: [
         proxy('/api', {
@@ -67,7 +68,7 @@ function packjs() {
             }
           },
           {
-            test: /\.art$/,
+            test: /\.html$/,
             loader: 'string-loader',
           }
         ]
