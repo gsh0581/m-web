@@ -30,15 +30,7 @@ function webServer() {
       livereload: true,
       port:8001,
       open: true,
-      middleware: [
-        proxy('/api', {
-          target: 'https://m.lagou.com',
-          changeOrigin: true,
-          pathRewrite: {
-            '^/api': ''
-          }
-        })
-      ]
+     
 
     }));
 };

@@ -34,5 +34,8 @@
     "dev": "gulp -f gulpfile-dev.js",
     "build": "gulp -f gulpfile-prod.js",
     "mock": "json-server .src/mock/listmore.json -p 9000 -w"
+  },
+  "dependencies": {
+    "swiper": "^4.5.0"
   }
 }
