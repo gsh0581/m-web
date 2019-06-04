@@ -1,10 +1,8 @@
 const  indexTpl = require('./view/index.html');
-const name = require("./controllers/name");
-const {list,renderCard} = require("./controllers/name");
+import homeController  from "./controllers/name";
 
-const Swiper = require('swiper')
 const renderedIndexTpl = template.render(indexTpl,{});
 
 $("#app").html(renderedIndexTpl);
-list();
-renderCard();
+homeController.renderTodayList();
+homeController.list();

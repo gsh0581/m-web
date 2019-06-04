@@ -1,3 +1,13 @@
-const mod = require('./name');
-console.log(mod.testVar);
-mod.testFn();
+module.exports={
+    renderList(){
+        $.ajax({
+            type: "method",
+            url: "url",
+            data: "data",
+            dataType: "dataType",
+            success: function (response) {
+                
+            }
+        });
+    }
+}

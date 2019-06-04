@@ -15,10 +15,12 @@ function copylib() {
   return src("./src/lib/**/*")
     .pipe(dest("./dev/lib"));
 }
+
 function copyimages() {
-  return src("./src/images/**/*")
-    .pipe(dest("./dev/lib"));
+  return src('./src/images/**/*')
+    .pipe(dest('./dev/images'))
 }
+
 function copyicons() {
   return src('./src/icons/**/*')
     .pipe(dest('./dev/icons'))
@@ -35,40 +37,45 @@ function webServer() {
     }));
 };
 function packjs() {
-  return src('./src/**/*.js')
+  return src('./src/**/*')
     .pipe(webpackStream({
-      mode: "development",  // production
+      mode: 'development',
+
       entry: {
-        app: './src/app.js'
+        app: ['./src/app.js']
       },
+
       output: {
-        filename: '[name].js',  // [name] =  app
+        filename: '[name].js',
         path: path.resolve(__dirname, './dev')
       },
-      //将es6-es8的代码转换成es5
+
+      // 将ES6-ES8 代码转换成 ES5
       module: {
         rules: [
           {
-            test: /\.m?js$/,
-            exclude: /(node_modules|bower_components)/,
+            test: /\.js$/,
+            // exclude: /node_modules/,
             use: {
               loader: 'babel-loader',
               options: {
                 presets: ['@babel/preset-env'],
-                plugins: ['@babel/plugin-transform-runtime'],
+                plugins: [['@babel/plugin-transform-runtime', {
+                  'helpers': false
+                }]]
               }
             }
           },
           {
             test: /\.html$/,
-            loader: 'string-loader',
+            loader: 'string-loader'
           }
         ]
       }
-    })
-    ).pipe(dest('./dev/scripts'));
+    }))
+    .pipe(dest('./dev/scripts'))
 }
-function packCss() {
+function packCSS() {
   return src('./src/styles/app.scss')
     .pipe(sass.sync().on('error', sass.logError))
     .pipe(dest('./dev/styles'));
@@ -78,20 +85,14 @@ function clear(target) {
     return del(target);
   }
 }
+
 function watcher() {
-  watch('./src/lib/**/*', series(clear('./dev/lib'), copylib));
-  watch('./images/**/*', series(clear('./dev/images'), copyimages));
-  watch("./*.html", series(clear('./dev/*.html'), copyHTML));
-  watch("./src/styles/**/*", series(packCss));
-  watch("./src/**/*.js", series(packjs));
-  watch(["./src/**/*", '!src/lib/**/*', '!src/icons/**/*', '!src/images/**/*', '!src/styles/**/*'], series(packjs));
+  watch('./src/lib/**/*', series(clear('./dev/lib'), copylib))
+  watch('./src/images/**/*', series(clear('./dev/images'), copyimages))
+  watch('./src/icons/**/*', series(clear('./dev/icons'), copyicons))
+  watch('./*.html', series(clear('./dev/*.html'), copyHTML))
+  watch('./src/styles/**/*', series(packCSS))
+  watch(['./src/**/*', '!src/lib/**/*', '!src/icons/**/*', '!src/images/**/*', '!src/styles/**/*'], series(packjs))
 }
 
-
-/**
- *  共有任务 与 私有任务
- * 共有任务需要在exprots里显式地去定义
- */
-// exports.webServer = series(webServer);  
-exports.default = series(parallel(packjs, packCss, copylib, copyimages, copyicons), copyHTML, webServer, watcher);
-// gulp.task('default',gulp.series('copyHTML','webserver'));
+exports.default = series(parallel(packCSS,copyHTML, packjs, copylib, copyimages, copyicons), webServer, watcher)

@@ -1,0 +1,10 @@
+{{each data}}
+<li data-spm="ditem_{{$index}}" class="home-card-item">
+    <div class="home-card-item-pic" lazy="loaded" style="background-image: url({{$value.verticalPic}})">
+    </div>
+    <p class="home-card-item-title">{{$value['name']}}</p>
+    <div class="home-card-item-price">
+        <span>￥{{$value['price']}} 起</span>
+    </div>
+</li>
+{{/each}}

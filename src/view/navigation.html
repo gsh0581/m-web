@@ -1,0 +1,6 @@
+{{each navigationList}}
+<div  data-spm="ditem_{{$index}}" class="home-grids__item">
+        <span  class="home-grids__item__icon" style="background-image: url({{$value.pic}})"></span>
+        <p  class="home-grids__item__name">{{$value['title']}}</p>
+        </div>
+{{/each}}
