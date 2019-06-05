@@ -1,5 +1,5 @@
 const  indexTpl = require('./view/index.html');
-import homeController  from "./controllers/name";
+import homeController  from "./controllers/";
 import homePreview from "./controllers/second";
 const renderedIndexTpl = template.render(indexTpl,{});
 
