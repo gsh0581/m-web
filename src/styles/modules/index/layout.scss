@@ -23,6 +23,7 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
+    background-color: #fff;
 }
 
 .home_box {
@@ -212,7 +213,7 @@ body {
         position: relative;
         height: 3.4rem;
         background: #fff;
-        .swiper-container {
+        .swiper-container2 {
             width: 100%;
             height: 100%;
 
@@ -325,10 +326,8 @@ body {
         margin: 0 .48rem .64rem;
         color: #999;
         font-size: .37333rem;
-        span{
-            .selected{
-                color:#111;
-            }
+        span.selected{
+                color:#111;            
         }
        
     }
@@ -344,6 +343,7 @@ body {
             right: 0;
             bottom: -.06667rem;
             white-space: nowrap;
+            overflow-y: hidden;
             overflow-x: scroll;
             .home-card-item {
                 background-image: url(https://gw.alicdn.com/tfs/TB1py5SQCzqK1RjSZFjXXblCFXa-150-150.png);
@@ -402,4 +402,347 @@ body {
     text-align: center;
     line-height: 1.38667rem;
     font-size: .37333rem;
+}
+.project-item {
+    position: relative;
+    display: flex;
+}
+
+.project-item:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: .4rem;
+    border-bottom: 1px solid #e7e7e7
+}
+
+.project-item_pic {
+    position: relative;
+    font-size: 0;
+    height: 2.37333rem
+}
+
+.project-item_pic_poster {
+    width: 1.76rem;
+    height: 2.37333rem;
+    border-radius: .08rem
+}
+
+.project-item_pic_atmosphericPic {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    left: 0;
+    bottom: 0
+}
+
+.project-item_info {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    margin-left: .30667rem;
+    padding-bottom: .26667rem
+}
+
+.project-item_info_title {
+    margin-top: -.06667rem;
+    width: 7.14667rem;
+    line-height: .6rem;
+    font-size: .4rem;
+    letter-spacing: 0
+}
+
+.project-item_info_time {
+    width: 7.14667rem;
+    padding-top: .18667rem;
+    font-size: .32rem;
+    color: #999;
+    letter-spacing: 0
+}
+
+.project-item_info_promotion {
+    font-size: 0
+}
+
+.project-item_info_tag {
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: .05333rem;
+    font-size: .26667rem;
+    line-height: .26667rem;
+    color: #ff1268;
+    padding: .09333rem .06667rem;
+    margin-top: .26667rem;
+    margin-right: .08rem;
+    letter-spacing: .01333rem
+}
+
+.project-item_info_showtag {
+    background: -webkit-linear-gradient(left,#ff4aae,#ff1a78 49%,#ff1268);
+    background: linear-gradient(90deg,#ff4aae,#ff1a78 49%,#ff1268);
+    color: #fff
+}
+
+.project-item_info_xuanzuo {
+    background: #eee!important;
+    color: #111!important
+}
+
+.project-item_info_price {
+    margin-top: .26667rem;
+    font-size: 0
+}
+
+.project-item_info_price_str {
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: .42667rem;
+    line-height: .42667rem;
+    color: #ff1268
+}
+
+.project-item_info_price_unit {
+    font-size: .26667rem;
+    color: #999;
+    line-height: .32rem;
+    margin-left: .09333rem;
+    vertical-align: bottom
+}
+
+.project-item_info_distance {
+    
+    float: right;
+    height: .45333rem;
+    font-size: .32rem;
+    color: #aaa
+}
+
+.project-item_info_head {
+    font-size: .29333rem;
+    color: #999;
+    letter-spacing: 0;
+    line-height: .44rem;
+    margin-top: .26667rem;
+    padding: .18667rem .18667rem 0 0;
+    position: relative
+}
+
+.project-item_info_head:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: .4rem;
+    border-top: 1px solid #e7e7e7
+}
+
+.project-item_limit_lines_2 {
+    -webkit-line-clamp: 2
+}
+
+.project-item_limit_lines_1,.project-item_limit_lines_2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-all
+}
+
+.project-item_limit_lines_1 {
+    -webkit-line-clamp: 1
+}
+
+.project-item.project_newhome:after {
+    border-bottom: none
+}
+
+.project_newhome .project-item_pic {
+    font-size: 0;
+    height: 3.2rem
+}
+
+.project_newhome .project-item_pic_poster {
+    width: 2.4rem;
+    height: 3.2rem;
+    border-radius: .08rem;
+    border: 1px solid rgba(0,0,0,.06)
+}
+
+.project_newhome .project-item_info {
+    margin-left: .32rem;
+    padding-bottom: 0;
+    position: relative
+}
+
+.project_newhome .project-item_info_title {
+    width: 6.32rem;
+    font-size: .42667rem;
+    color: #111;
+    font-weight: 700
+}
+
+.project_newhome .project-item_info_time {
+    width: 6.32rem;
+    font-size: .32rem;
+    color: #aaa;
+    padding-top: .16rem
+}
+
+.project_newhome .project-item_info_price_str {
+    font-size: .37333rem;
+    color: #ff1268
+}
+
+.project_newhome .project-item_info_price {
+    position: absolute;
+    bottom: 0;
+    width: 98%
+}
+
+.project_newhome .project_newhome_tag {
+    padding: .01333rem .08rem .04rem;
+    font-size: .29333rem;
+    color: #ff1268;
+    background: #fbe8ef;
+    border-radius: .08rem .08rem .21333rem .08rem;
+    line-height: normal;
+    border: none
+}
+.home_project-item{
+
+    margin: .48rem;
+    margin-bottom: .96rem;
+    
+}
+.home-factor_wrapper_active{
+    color: #ff1268;
+}
+.artist-wrapper[data-v-35b1b146] {
+    position: relative;
+    z-index: 1010;
+    height: 3.4rem;
+    margin-left: .48rem;
+    overflow: hidden
+}
+
+.artist-wrapper_content[data-v-35b1b146] {
+    height: 3.4rem;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap
+}
+
+.artist-wrapper .artist-top[data-v-35b1b146] {
+    border-bottom: 1px solid #eee
+}
+
+.artist-wrapper .artist-bottom[data-v-35b1b146],.artist-wrapper .artist-top[data-v-35b1b146] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center
+}
+
+.artist-wrapper .artist-bottom[data-v-35b1b146] {
+    height: 1.02667rem
+}
+
+.artist-wrapper .artist-bottom .icon-jiantouyou[data-v-35b1b146] {
+    font-size: .24rem
+}
+
+.artist-wrapper_item[data-v-35b1b146] {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 6.08rem;
+    padding: 0 .32rem;
+    margin-right: .4rem;
+    border: 1px solid #eee;
+    border-radius: .08rem;
+    box-shadow: 0 .08rem .4rem 0 rgba(0,0,0,.05)
+}
+
+.artist-wrapper_item .artist-img[data-v-35b1b146] {
+    width: 1.33333rem;
+    height: 1.33333rem;
+    margin: .37333rem .24rem .37333rem 0;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center
+}
+
+.artist-wrapper_item .artist-info[data-v-35b1b146] {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: left
+}
+
+.artist-wrapper_item .artist-info .artist-name[data-v-35b1b146] {
+    display: inline-block;
+    font-size: .42667rem;
+    color: #111
+}
+
+.artist-wrapper_item .artist-info .artist-fans[data-v-35b1b146] {
+    font-size: .26667rem;
+    color: #888
+}
+
+.artist-wrapper_item .artist-info .artist-city[data-v-35b1b146] {
+    margin-top: .16rem;
+    font-size: .32rem;
+    color: #aaa;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.artist-wrapper_item .artist-info .artist-follow[data-v-35b1b146] {
+    margin-top: .37333rem;
+    width: 1.28rem;
+    height: .56rem;
+    line-height: .56rem;
+    font-size: .32rem;
+    text-align: center;
+    color: #fff;
+    background-image: -webkit-linear-gradient(317deg,#ff66bc 6%,#ff1268 97%);
+    background-image: linear-gradient(-227deg,#ff66bc 6%,#ff1268 97%);
+    border-radius: 1.33333rem
+}
+
+.artist-wrapper_item .artist-info .artist-followed[data-v-35b1b146] {
+    background: #ddd
+}
+
+.artist-wrapper_item .artist-city[data-v-35b1b146] {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: left;
+    font-size: .32rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.artist-wrapper_item .artist-follow[data-v-35b1b146] {
+    padding: 0 .24rem;
+    width: 1.52rem;
+    height: .69333rem;
+    box-sizing: border-box;
+    line-height: .69333rem;
+    font-size: .32rem;
+    text-align: center;
+    color: #ff1268;
+    border: 2px solid #ff1268;
+    border-radius: 1.33333rem
+}
+
+.artist-wrapper_item .artist-followed[data-v-35b1b146] {
+    color: #aaa;
+    border: 2px solid #eee
 }
