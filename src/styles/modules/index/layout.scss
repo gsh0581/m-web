@@ -25,12 +25,31 @@ body {
     overflow-y: auto;
     background-color: #fff;
 }
+.home{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
 
+
+}
 .home_box {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     height: 100%;
     padding-bottom: .58667rem !important;
+}
+.home-content {
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .home {

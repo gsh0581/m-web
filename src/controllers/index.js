@@ -1,5 +1,4 @@
 const homeCardTpl = require('../view/home-card.html');
-const homeWeekTpl = require('../view/homeWeek.html');
 const focusPicListTpl = require('../view/focusPisList.html');
 const moreListTpl = require('../view/moreProjects.html')
 const navigationListTpl = require('../view/navigation.html');
