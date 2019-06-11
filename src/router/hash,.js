@@ -5,14 +5,20 @@ const router = {
             case '#home':
                 $('#app').html('');
                 break;
-            case '#home':
+            case '#category':
                 $('#app').html('');
                 break;
 
-            case '#home':
+            case '#detail':
+                $('#app').html('');
+                break;
+            case '#login':
+                $('#app').html('');
+                break;
+            case '#reg':
                 $('#app').html('');
                 break;
         }
-        
+
     }
 }

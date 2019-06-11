@@ -1,25 +1,12 @@
-const homeCardTpl = require('../view/home-card.html');
 const focusPicListTpl = require('../view/focusPisList.html');
-const moreListTpl = require('../view/moreProjects.html')
 const navigationListTpl = require('../view/navigation.html');
+import homePreview from "./second";
 const BScroll = require('better-scroll').default;
 const localData = require('../mock/mock').naviList;
+import showList from "./show"
 const Swiper = require('swiper').default;
-import fetch from '../models/fetch'
-let todayList = [];
-let moreList = [];
-
-
-const renderTodayList = async () => {
-    let result = await fetch.get(`https://search.damai.cn/searchajax.html?keyword=&cty=&ctl=&sctl=&tsg=1&st=&et=&order=1&pageSize=30&currPage=1&tn=`);
-    let data = todayList = result.pageData.resultData;
-
-    let renderedTodayListTpl = template.render(homeCardTpl, { data });
-    $(".home-card").html(renderedTodayListTpl);
-}
-
 function list() {
- 
+
     let focusPicList = localData.focusPicList;
     let renderedfocusPicListTpl = template.render(focusPicListTpl, { focusPicList });
     $(".mswiper>.swiper-container>.swiper-wrapper").html(renderedfocusPicListTpl);
@@ -33,17 +20,38 @@ function list() {
         },
         autoplay: true,//等同于以下设置
     });
-  
-}
-const renderMoreList = async () => {
-    let result = await fetch.get(`https://search.damai.cn/searchajax.html?keyword=&cty=&ctl=&sctl=&tsg=0&st=&et=&order=1&pageSize=30&currPage=1&tn=`);
-    let data = moreList = result.pageData.resultData;
-    let renderedrenderMoreListTpl = template.render(moreListTpl, { data });
-    $(".home-content-more_projects>div").html(renderedrenderMoreListTpl);
-}
 
+}
+function bindLink() {
+    $('.home-grids').on('click', '.home-grids__item', handleLink.bind(this))
+  }
+  function handleLink(e){
+        e.preventDefault();
+        // 获取元素路径属性
+        let href = $(e.target).next().html()
+       console.log(window.location.href+'category?ctl='+ href);
+        // 对非路由链接直接跳转
+        // if (href.slice(0, 1) !== '#') {
+        //   window.location.href ='category?ctl='+ href
+        // } else {
+        //   let path = href
+        //   history.pushState({
+        //     path: path
+        //   }, null, path)
+        //   // 加载相应页面
+        //   this.loadView(path.split('?')[0])
+        // }
+      
+  }
+function render() {
+    homePreview.second.loadData();
+    homePreview.second.init();
+    homePreview.renderTodayList(1);
+    list();
+    bindLink();
+    showList.renderMoreList();
+    
+}
 export default {
-    list,
-    renderTodayList,
-    renderMoreList
+    render
 }

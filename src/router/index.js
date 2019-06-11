@@ -16,13 +16,11 @@ export default class Router {
       '/index/details': details,
       '/index/home/category': category,
       '/index/home/search': search,
-      '/index/home/login': login,
-      '/index/home/register': register
+      '/index/login': login,
+      '/index/register': register
     }
     // 组件挂载根元素
-    this.root = $('#main')
-    // 导航菜单列表
-    this.navList = $('nav a')
+    this.root = $('#app')
     this.init()
   }
 
@@ -38,10 +36,10 @@ export default class Router {
     }
   }
   /**
-   * history模式劫持 a链接
+   * 分类列表跳转
    */
   bindLink() {
-    $('nav').on('click', 'a', this.handleLink.bind(this))
+    $('.home-grids').on('click', '.home-grids__item', this.handleLink.bind(this))
   }
   /**
    * history 处理a链接
@@ -50,12 +48,12 @@ export default class Router {
   handleLink(e) {
     e.preventDefault();
     // 获取元素路径属性
-    let href = $(e.target).attr('href')
+    let href = $(e.target).next().html()
     // 对非路由链接直接跳转
     if (href.slice(0, 1) !== '#') {
-      window.location.href = href
+      window.location.href ='category?ctl='+ href
     } else {
-      let path = href.slice(1)
+      let path = href
       history.pushState({
         path: path
       }, null, path)
@@ -103,10 +101,6 @@ export default class Router {
     this.currentURLlist = currentURL.slice(1).split('/')
     this.url = ""
     this.currentURLlist.forEach((item, index) => {
-      // 导航菜单激活显示
-      if (index === 0) {
-        this.navActive(item)
-      }
       this.url += "/" + item
       this.controllerName = this.routes[this.url]
       // 404页面处理
@@ -167,7 +161,6 @@ export default class Router {
    */
   controller(name, item) {
     name.render() // name 是当前路由匹配的那个 controller
-    this.navActive(item) // 切换路由时导航高亮
   }
   /**
    * 手动跳转路由
@@ -210,12 +203,5 @@ export default class Router {
       obj = null; // 用完即释放空间
     }
     Event = null
-  }
-  /**
-   * 导航激活显示
-   * @param  item 当前router对象
-   */
-  navActive(item) {
-    $('nav a').filter(`[href="#${item}"]`).closest('li').addClass('active').siblings().removeClass('active')
   }
 }

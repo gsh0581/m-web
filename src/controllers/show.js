@@ -1,35 +1,12 @@
-const BScroll = require('better-scroll').default;
-let bScroll = new BScroll('#index-scroll',{
-    probeType:1,
-    click:true
-})
-// 初始化位置
-bScroll.scrollTo(0,0);
-// 绑定滑动事件
-bScroll.on('scroll',function(){
-    let y = this.y;
-    let maxY = this.maxScrollY - y
-    if(maxY >= 0){
-        return 
-    }
-})
-bScroll.on('scrollEnd',async function () {  
-    if(this.y<0){
-        this.scrollTo(0,0)
-    }
-    let maxY = this.maxScrollY - this.y;
-    if(maxY>-40 && maxY <0){
-        this.scrollTo(0,this.maxScrollY+40);
-    }else if(maxY >=0){
-        let result = await fetch.get(``);
-        let data = positionList = [...positionList,...result.pageData.resultData];
-        let renderedrenderMoreListTpl = template.render(moreListTpl, { data });
-        $(".home-content-more_projects>div").html(renderedrenderMoreListTpl);
-
-        this.refresh() // 重新计算 better-scroll，当 DOM 结构发生变化的时候务必要调用确保滚动的效果正常。
-        this.scrollTo(0, this.maxScrollY + 40)
-    }
-})
-
-
-
+const moreListTpl = require('../view/moreProjects.html');
+import fetch from '../models/fetch'
+let moreList = [];
+const renderMoreList = async () => {
+    let result = await fetch.get(`https://search.damai.cn/searchajax.html?keyword=&cty=&ctl=&sctl=&tsg=0&st=&et=&order=1&pageSize=30&currPage=1&tn=`);
+    let data = moreList = result.pageData.resultData;
+    let renderedrenderMoreListTpl = template.render(moreListTpl, { data });
+    $(".home-content-more_projects>div").html(renderedrenderMoreListTpl);
+}
+export default{
+    renderMoreList
+}
