@@ -36,6 +36,6 @@
     "mock": "json-server .src/mock/listmore.json -p 9000 -w"
   },
   "dependencies": {
-    "swiper": "^4.5.0"
+    "swiper": "^6.5.1"
   }
 }
